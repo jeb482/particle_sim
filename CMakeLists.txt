@@ -7,9 +7,9 @@ INCLUDE_DIRECTORIES ($PROJECT_SOURCE_DIR/ext/eigen)
 
 # GLAD
 add_subdirectory(ext/glad/)
-
+add_subdirectory(ext/glfw/)
 
 add_executable(particle_sim main.cpp viewer.hpp snapshot.hpp scene.hpp particle.hpp camera.hpp)
 
 
-target_link_libraries(particle_sim PRIVATE glad)
+target_link_libraries(particle_sim PRIVATE glad glfw)
