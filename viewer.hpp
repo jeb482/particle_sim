@@ -1,14 +1,19 @@
 #include <iostream>
-#include "snapshot.hpp"
+#include <memory>
+
 #include <glad\glad.h>
 #include <GLFW\glfw3.h>
-#include <memory>
+
+#include "simulation.hpp"
+#include "snapshot.hpp"
 
 class Viewer {
 
 protected:
 	
 	GLFWwindow* m_window;
+	std::shared_ptr<Snapshot> m_current_snapshot;
+	std::shared_ptr<Simulation> m_simulation;
 
 public:
 
@@ -28,7 +33,7 @@ public:
 	void run() {
 		while (!glfwWindowShouldClose(m_window))
 		{
-
+			m_snapshot = m_simulation->estimateFrameFromTime(m_current_snapshot, 0)
 			draw();
 			// Keep running
 		}
